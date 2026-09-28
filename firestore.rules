@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Pomocnicza funkcja sprawdzająca czy żądanie pochodzi od Super Administratora
+    function isSuperAdmin() {
+      return request.auth != null && 
+        (request.auth.token.email == 'zababiznes2000@gmail.com' || request.auth.token.email_verified && request.auth.token.email == 'zababiznes2000@gmail.com');
+    }
+    
+    // Pomocnicza funkcja sprawdzająca czy użytkownik jest zalogowany
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Pomocnicza funkcja sprawdzająca czy użytkownik jest autorem dokumentu
+    function isAuthor(authorEmail) {
+      return isAuthenticated() && request.auth.token.email == authorEmail;
+    }
+
+    // Reguły dla kolekcji przepisów (recipes)
+    match /recipes/{recipeId} {
+      // Każdy może odczytać opublikowane przepisy; Admin i autor widzą także oczekujące
+      allow read: if resource.data.moderationStatus == 'APPROVED' || 
+                     isSuperAdmin() || 
+                     (isAuthenticated() && resource.data.authorEmail == request.auth.token.email);
+      
+      // Zwykły użytkownik może dodać przepis (ze statusem PENDING), Super Admin może dodać bezpośrednio APPROVED
+      allow create: if isSuperAdmin() || 
+                       (isAuthenticated() && request.resource.data.authorEmail == request.auth.token.email);
+      
+      // Super Admin może edytować KAŻDY przepis (updateDoc / setDoc merge). 
+      // Zwykły użytkownik nie ma uprawnień do edycji opublikowanych przepisów ani cudzych przepisów.
+      allow update: if isSuperAdmin();
+      
+      // Wyłącznie Super Administrator może trwale usuwać przepisy z bazy danych
+      allow delete: if isSuperAdmin();
+    }
+
+    // Reguły dla prywatnych list zakupów i zaplanowanych posiłków użytkownika (users/{userKey}/shoppingList/{docId})
+    match /users/{userKey} {
+      allow read, write: if isAuthenticated() && 
+        (request.auth.token.email.replace('@', '_').replace('.', '_') == userKey || request.auth.uid == userKey || isSuperAdmin());
+        
+      match /shoppingList/{document=**} {
+        allow read, write, delete: if isAuthenticated() && 
+          (request.auth.token.email.replace('@', '_').replace('.', '_') == userKey || request.auth.uid == userKey || isSuperAdmin());
+      }
+        
+      match /mealHistory/{document=**} {
+        allow read, write, delete: if isAuthenticated() && 
+          (request.auth.token.email.replace('@', '_').replace('.', '_') == userKey || request.auth.uid == userKey || isSuperAdmin());
+      }
+    }
+  }
+}

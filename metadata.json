@@ -1,0 +1,8 @@
+{
+  "name": "FitKuchnia",
+  "description": "Inteligentna aplikacja kulinarna z precyzyjnym kalkulatorem porcji, agregatorem zakupów, minutnikami, trybem gotowania i analizą Fit Punktów.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
