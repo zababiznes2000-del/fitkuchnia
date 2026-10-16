@@ -1,117 +1,63 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitKuchnia v1.4.3 - Pobierz najnowszy APK</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-        body {
-            background-color: #0F1416;
-            color: #F0F4F5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 24px;
-            text-align: center;
-        }
-        .card {
-            background-color: #171F22;
-            border: 1.5px solid rgba(0, 230, 118, 0.4);
-            border-radius: 24px;
-            padding: 32px 24px;
-            max-width: 460px;
-            width: 100%;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
-        }
-        .icon {
-            font-size: 56px;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-        h1 {
-            font-size: 26px;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 8px;
-        }
-        .badge {
-            display: inline-block;
-            background-color: rgba(0, 230, 118, 0.15);
-            color: #00E676;
-            border: 1px solid #00E676;
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-        p {
-            color: #9BA3A7;
-            font-size: 15px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            background-color: #00E676;
-            color: #0F1416;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 16px;
-            padding: 15px 20px;
-            border-radius: 14px;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 16px rgba(0, 230, 118, 0.3);
-            transition: all 0.2s ease;
-        }
-        .btn:hover, .btn:active {
-            background-color: #00C853;
-            transform: translateY(-2px);
-        }
-        .btn-alt {
-            background-color: transparent;
-            color: #00E676;
-            border: 1.5px solid rgba(0, 230, 118, 0.5);
-            font-weight: 600;
-            font-size: 14px;
-            padding: 12px 16px;
-            box-shadow: none;
-        }
-        .meta {
-            margin-top: 24px;
-            font-size: 12px;
-            color: #6C757D;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 16px;
-            line-height: 1.6;
-        }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="icon">🥗</div>
-        <h1>FitKuchnia</h1>
-        <div class="badge">Najnowszy plik APK: v1.4.3</div>
-        <p>Pobierz i zainstaluj najnowszą wersję aplikacji bezpośrednio na telefonie Android. Wszelkie zmiany i moduły są wbudowane w ten plik.</p>
-        
-        <a href="/FitKuchnia-v1.4.3.apk" class="btn" download>Pobierz FitKuchnia v1.4.3 (APK)</a>
-        <a href="/FitKuchnia.apk" class="btn btn-alt" download>Pobierz FitKuchnia.apk</a>
-        <a href="/app-debug.apk" class="btn btn-alt" download>Alternatywny link (app-debug.apk)</a>
-        
-        <div class="meta">
-            Wersja: <strong>1.4.3</strong><br>
-            Data i czas kompilacji: <strong>2026-09-28 14:18:30</strong><br>
-            Przed instalacją odinstaluj starą wersję z telefonu (aby usunąć stary cache).
-        </div>
-    </div>
-</body>
-</html>
+
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FitKuchnia – zdrowe gotowanie</title><link rel="stylesheet" href="style.css"></head><body>
+<i class="blob" style="--d:60;left:-80px;top:10vh"></i><i class="blob" style="--d:-40;right:-100px;bottom:5vh;filter:blur(40px) hue-rotate(30deg)"></i>
+<div class="plate" style="--d:30;left:3vw;top:24vh"><div>🥗</div></div>
+<div class="plate" style="--d:-45;right:4vw;top:34vh;--s:.8"><div>🍓</div></div>
+<div class="plate" style="--d:60;left:10vw;bottom:8vh;--s:.65"><div>🥣</div></div>
+<nav class="glass">
+<button data-tab="odkrywaj" class="on">Odkrywaj</button><button data-tab="szukaj">Szukaj &amp; Lodówka</button><button data-tab="zakupy">Zakupy</button><button data-tab="dietetyk">Dietetyk AI</button><button data-tab="apk">Instrukcja APK</button><button data-tab="opinie">Opinie</button><button data-tab="admin">Panel Administratora</button></nav>
+<main>
+<section id="odkrywaj" class="on">
+<h1 data-cms="home.title">Gotuj zdrowo. Jedz pięknie.</h1>
+<p class="lead" data-cms="home.lead">FitKuchnia podpowie, co ugotować z tego, co masz w lodówce, policzy makroskładniki i ułoży listę zakupów.</p>
+<h2 data-cms="home.featured">Polecane na dziś</h2><div id="featured"></div>
+<div class="row"><h2 data-cms="home.all">Wszystkie przepisy</h2><button class="btn" id="addBtn">+ Dodaj</button></div>
+<div id="grid" class="grid"></div></section>
+
+<section id="szukaj"><h1>Szukaj &amp; Lodówka</h1>
+<input id="q" placeholder="Szukaj dania lub składnika…">
+<div class="chips" id="chips"><button class="on" data-c="">Wszystkie</button><button data-c="Śniadanie">Śniadanie</button><button data-c="Obiad">Obiad</button><button data-c="Kolacja">Kolacja</button><button data-c="Słodkie">Słodkie</button></div>
+<div id="results" class="grid"></div>
+<div class="glass card tilt" style="margin-top:24px"><h2>Lodówka zero waste</h2>
+<p class="muted">Wpisz składniki, które masz (po przecinku) albo dolegliwość, np. „ból brzucha”.</p>
+<input id="fridgeIn" placeholder="jajka, banan, płatki owsiane lub: ból brzucha"><button class="btn" id="fridgeGo">Dopasuj przepis</button><div id="fridgeOut" class="grid"></div></div></section>
+
+<section id="zakupy"><h1>Zakupy</h1><p class="muted">Wybierz posiłek na każdy dzień. Lista zsumuje powtarzające się składniki i pogrupuje je według działów sklepu.</p>
+<div id="planner" class="grid"></div><button class="btn" id="makeList">Utwórz listę zakupów</button><div id="list" class="glass card"></div></section>
+
+<section id="dietetyk"><h1>Dietetyk AI</h1>
+<div class="glass card"><h2>Co dziś zjadłeś?</h2><select id="eatSel"></select><button class="btn" id="eatBtn">Dodaj do dziennika</button><div id="eaten"></div><div id="summary"></div></div>
+<div class="glass card tilt" style="margin-top:16px"><h2>Szef kuchni Ratatouille</h2><p class="muted">Przeanalizuje składniki zjedzonych posiłków i wskaże braki. To wskazówki żywieniowe, nie porada lekarska.</p><button class="btn" id="chefBtn">Przeanalizuj mój dzień</button><div id="chef"></div></div></section>
+
+<section id="apk"><h1>Instrukcja APK</h1><ol class="steps glass card">
+<li><b>Pobierz plik.</b> Naciśnij przycisk poniżej – plik FitKuchnia.apk zapisze się w Pobranych.</li>
+<li><b>Zezwól na instalację.</b> Wejdź w Ustawienia → Bezpieczeństwo (lub Aplikacje) i włącz „Instaluj z nieznanych źródeł” dla przeglądarki.</li>
+<li><b>Zainstaluj.</b> Otwórz pobrany plik i wybierz „Zainstaluj”.</li>
+<li><b>Gotowe.</b> Uruchom FitKuchnię z ekranu głównego.</li></ol>
+<a class="btn" id="apkLink" href="#" download>Pobierz FitKuchnia.apk</a></section>
+
+<section id="opinie"><h1>Opinie i błędy</h1>
+<form id="fb" class="glass card"><input name="name" placeholder="Imię" required>
+<select name="type"><option>Opinia</option><option>Zgłoszenie błędu</option></select>
+<select name="rating"><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option></select>
+<textarea name="msg" rows="4" placeholder="Napisz, co działa, a co nie…" required></textarea><button class="btn">Wyślij</button><p id="fbMsg" class="muted"></p></form></section>
+
+<section id="admin"><h1>Panel Administratora</h1>
+<div class="glass card"><h2>Przepisy</h2><button class="btn" id="addBtn2">+ Nowy przepis (publiczny)</button></div>
+<div class="glass card" style="margin-top:16px"><h2>Plik APK</h2><input type="file" id="apkFile" accept=".apk"><button class="btn" id="apkUp">Wgraj do Firebase Storage</button><p id="apkMsg" class="muted"></p></div>
+<div class="glass card" style="margin-top:16px"><h2>Opinie użytkowników</h2><div id="fbList"></div></div></section>
+</main>
+
+<button id="save" class="btn" hidden>Zapisz zmiany</button>
+
+<div class="modal" id="pass" hidden><form class="glass card"><h2>Kod administratora</h2><input id="code" type="password" class="big" autocomplete="current-password" placeholder="••••••"><p id="passErr" class="muted"></p><button class="btn">Odblokuj</button> <button type="button" class="btn ghost" data-close>Anuluj</button></form></div>
+
+<div class="modal" id="addR" hidden><form class="glass card"><h2>Nowy przepis</h2>
+<input name="n" placeholder="Nazwa dania" required>
+<select name="m"><option>Śniadanie</option><option>Obiad</option><option>Kolacja</option><option>Słodkie</option></select>
+<div class="row3"><input name="t" type="number" placeholder="Czas (min)" required><input name="k" type="number" placeholder="kcal" required><input name="p" type="number" placeholder="Białko g" required><input name="c" type="number" placeholder="Węgle g" required><input name="f" type="number" placeholder="Tłuszcz g" required></div>
+<textarea name="i" rows="5" placeholder="Składniki, po jednym w linii:&#10;jajka, 2, szt, Nabiał" required></textarea>
+<button class="btn">Zapisz przepis</button> <button type="button" class="btn ghost" data-close>Anuluj</button></form></div>
+<script type="module" src="app.js"></script></body></html>
